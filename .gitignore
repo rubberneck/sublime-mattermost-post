@@ -1,0 +1,4 @@
+.DS_Store
+*.pyc
+package-metadata.json
+*.sublime-package

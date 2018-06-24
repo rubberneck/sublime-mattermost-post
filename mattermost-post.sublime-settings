@@ -1,0 +1,13 @@
+{
+    "url": "",
+    "team": "",
+    "channel": "",
+    "pat": "",
+    "post_fileinfo": false,
+    "max_lines": 25,
+    "syntax_map": {
+        "Packages/C#/C#.sublime-syntax": "cs",
+        "Packages/C++/C++.sublime-syntax": "cpp",
+        "Packages/Objective-C/Objective-C.sublime-syntax": "objectivec",
+    },
+}

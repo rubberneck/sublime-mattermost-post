@@ -1,0 +1,4 @@
+[
+    { "caption": "-", "id": "mattermost_post" },
+    { "command": "mattermost_post", "caption": "Mattermost Post" }
+]
