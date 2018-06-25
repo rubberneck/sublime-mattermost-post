@@ -1,7 +1,0 @@
-[
-    { "keys": [""], "command": "mattermost_post",
-        "context": [
-            { "key": "selection_empty", "operator": "equal", "operand": false }
-        ],
-    },
-]

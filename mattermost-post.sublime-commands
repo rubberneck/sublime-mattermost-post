@@ -6,13 +6,6 @@
       "default": "{\n\t$0\n}\n"
     }
   },
-  { "caption": "Preferences: Mattermost Post Key Bindings",
-    "command": "edit_settings",
-    "args": {
-      "base_file": "${packages}/Mattermost Post/Default.sublime-keymap",
-      "default": "[\n\t$0\n]\n"
-    }
-  },
   { "caption": "Mattermost Post: Open Readme",
     "command": "open_file",
     "args": {

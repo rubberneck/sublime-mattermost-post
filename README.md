@@ -66,7 +66,7 @@ for syntax highliting.
 ## Keybindings
 I don't set a default key binding.
 
-You can use ctrl+shift+p then "Preferences: Mattermost Post Key Bindings"
+You can use ctrl+shift+p then "Preferences: Key Bindings"
 
 Example
 ```json
