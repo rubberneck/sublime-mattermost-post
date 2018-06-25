@@ -1,0 +1,9 @@
+Settings
+---------
+ctrl-shift-p "Preferences: Mattermost Post"
+
+All settings are required execpt the syntax map.
+
+
+
+See https://github.com/rubberneck/sublime-mattermost-post/blob/master/README.md for more information.
