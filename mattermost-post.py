@@ -1,6 +1,7 @@
 from contextlib import closing
 import http.client
 import json
+import re
 import sublime
 import sublime_plugin
 import sys
@@ -21,6 +22,18 @@ class MattermostPostCommand(sublime_plugin.TextCommand):
 
         if url == "" or team == "" or channel == "" or pat == "" or max_lines == 0:
             sublime.error_message("Mattermost Post: Setting missing.")
+            return
+
+        if re.match("^[a-z0-9-.]*$", url) is None:
+            sublime.error_message("Mattermost Post: Setting url may contain only lowercase letters, numbers, dots and dashes.")
+            return
+
+        if re.match("^[a-z0-9-]*$", team) is None:
+            sublime.error_message("Mattermost Post: Setting team may contain only lowercase letters, numbers and dashes.")
+            return
+
+        if re.match("^[a-z0-9-]*$", channel) is None:
+            sublime.error_message("Mattermost Post: Setting channel may contain only lowercase letters, numbers and dashes.")
             return
 
         with closing(http.client.HTTPSConnection(url)) as conn:

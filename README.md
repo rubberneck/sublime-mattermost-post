@@ -33,6 +33,16 @@ Example
 }
 ```
 
+### Settings - team
+This is the team part of the url NOT the team name.
+
+For example the team name "Example Team" would have a team url of "example-team".
+
+### Settings - channel
+This is the channel part of the url NOT the channel name.
+
+For example the channel name "Town Square" would have a channel url of "town-square".
+
 ### Settings - pat
 This is a [Personal Access Token](https://docs.mattermost.com/developer/personal-access-tokens.html)
 
