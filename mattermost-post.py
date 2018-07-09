@@ -39,10 +39,10 @@ class MattermostPostCommand(sublime_plugin.TextCommand):
         with closing(http.client.HTTPSConnection(url)) as conn:
             headers = {
                 "Content-Type": "application/json; charset=utf-8",
-                "Authorization": "Bearer " + pat,
+                "Authorization": "Bearer {}".format(pat),
             }
             try:
-                conn.request("GET", "/api/v4/teams/name/" + team + "/channels/name/" + channel, "", headers)
+                conn.request("GET", "/api/v4/teams/name/{}/channels/name/{}".format(team, channel), "", headers)
             except Exception as e:
                 sublime.error_message("Mattermost Post: Trouble with https connection. See console for more info.")
                 raise e
@@ -70,8 +70,9 @@ class MattermostPostCommand(sublime_plugin.TextCommand):
 
             full_path = self.view.file_name()
             if full_path is not None and post_fileinfo is True:
-                post['message'] += "Filename: "
-                post['message'] += full_path.split(self.view.window().extract_variables()['folder'] + "/")[1] + "\n"
+                post['message'] += "Filename: {}\n".format(
+                    full_path.split("{}/".format(self.view.window().extract_variables()['folder']))[1]
+                )
 
             code_blocks = ""
             for region in selections:
@@ -81,15 +82,17 @@ class MattermostPostCommand(sublime_plugin.TextCommand):
                     continue
 
                 if len(region_text.splitlines()) > max_lines:
-                    sublime.error_message("Mattermost Post: selection lines > " + str(max_lines))
+                    sublime.error_message("Mattermost Post: selection lines > {}".format(max_lines))
                     return
 
                 if post_fileinfo is True:
                     beginning_linenumber = self.view.rowcol(region.begin())[0] + 1
                     ending_linenumber = self.view.rowcol(region.end())[0] + 1
-                    code_blocks += "Linenumbers: " + str(beginning_linenumber) + " - " + str(ending_linenumber) + "\n"
+                    code_blocks += "Linenumbers: {} - {}\n".format(beginning_linenumber, ending_linenumber)
 
-                code_blocks += "```" + syntax + "\n" + region_text + "\n" + "```\n"
+                code_blocks += "```{}\n".format(syntax)
+                code_blocks += "{}\n".format(region_text)
+                code_blocks += "```\n"
 
             if code_blocks == "":
                 return
